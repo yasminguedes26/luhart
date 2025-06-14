@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Luh'Art – Onde ideias ganham forma</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="imagens/png" href="imagens/favicon.png.jpeg" />
+  <!-- Fontes Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="stars-bg" aria-hidden="true"></div>
+
+  <nav role="navigation" aria-label="Menu principal">
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+      ☰
+    </button>
+    <div class="menu-links" id="menu">
+      <a href="#sobre">Sobre Mim</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </nav>
+
+  <main>
+    <header>
+      <img src="imagens/logo.png.jpeg" Alt="Logo LuhArt" class="logo-img" />
+      <h1>Onde ideias ganham forma</h1>
+    </header>
+
+    <section id="sobre">
+      <h2>Sobre Mim</h2>
+      <p>
+        Sou apaixonada por criar com propósito. Cada peça personalizada é feita com carinho, e cada Bíblia restaurada é tratada com o respeito e o cuidado que a Palavra merece. Meu desejo é que cada criação leve uma mensagem de fé, amor e beleza.
+      </p>
+    </section>
+
+    <section id="servicos">
+      <h2>O que Eu Faço</h2>
+      <article class="servico" tabindex="0" aria-labelledby="servico1">
+        <h3>✨ Personalizados</h3>
+        <p>Criações únicas para momentos especiais: convites, lembranças, artes decorativas e mais.</p>
+      </article>
+      <article class="servico" tabindex="0">
+        <h3>📖 Restauração de Bíblias</h3>
+        <p>Renovo Bíblias com encadernações artesanais e design delicado, mantendo viva a Palavra que transforma vidas.</p>
+      </article>
+      <article class="servico" tabindex="0">
+        <h3>🕊️ Arte com Propósito</h3>
+        <p>Projetos criativos com mensagens bíblicas e inspiração cristã, para edificar e embelezar.</p>
+      </article>
+    </section>
+
+    <section id="galeria">
+      <h2>Galeria</h2>
+      <div class="grid-galeria">
+        <img src="imagens/Caixinhas Personalizadas.jpeg" alt="Caixinhas Personalizadas" />
+        <img src="imagens/Restauração de Bíblia.jpeg" alt="Restauração de Bíblia" />
+        <img src="imagens/Capa simples.jpeg" alt="Capa Simples" />
+        <img src="imagens/Floral.jpeg" alt="Floral" />
+        <img src="imagens/Restauração de Bíblica com capa floral.jpeg" alt="Capa Floral" />
+        <img src="imagens/Desbravadores.jpeg" alt="Desbravadores" />
+        <img src="imagens/Capa com o Leão.jpeg" alt="Capa com o Leão" />
+        <img src="imagens/Capa de caderno.jpeg" alt="Capa de caderno" />
+        <img src="imagens/Leão.jpeg" alt="Leão" />
+      </div>
+    </section>
+    <!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-img" src="" alt="Imagem ampliada">
+</div>
+
+    <section id="contato">
+      <h2>Fale Comigo</h2>
+      <p>Tem um pedido especial? Envie sua mensagem ou fale direto pelo WhatsApp:</p>
+      <a class="whatsapp-button" href="https://wa.me/5591982120998" target="_blank" rel="noopener noreferrer">
+        📲 Fale pelo WhatsApp
+      </a>
+
+      <form action="https://formsubmit.co/luciane.nery199202@gmail.com" method="POST" novalidate>
+        <input type="text" name="nome" placeholder="Seu nome" required aria-label="Seu nome" />
+        <input type="email" name="email" placeholder="Seu e-mail" required aria-label="Seu e-mail" />
+        <textarea name="mensagem" rows="4" placeholder="Sua mensagem" required aria-label="Sua mensagem"></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>
+      "Tudo quanto fizerem, façam de todo o coração, como para o Senhor, e não para homens." <br />
+      <span>– Colossenses 3:23</span>
+    </p>
+  </footer>
+
+  <button id="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">⬆</button>
+
+  <script>
+    // Gera estrelas dinamicamente
+    const starsBg = document.querySelector('.stars-bg');
+    const numStars = 80;
+
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDelay = `${Math.random() * 20}s`;
+      star.style.width = star.style.height = `${Math.random() * 2 + 1}px`;
+      starsBg.appendChild(star);
+    }
+
+    // Menu toggle acessível
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('menu');
+
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      menu.classList.toggle('show');
+    });
+
+    // Scroll suave para menu e ativar link ativo
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+      let scrollY = window.pageYOffset;
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          navLinks.forEach((link) => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    });
+
+    // Botão voltar ao topo
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.style.display = 'block';
+      } else {
+        backToTopBtn.style.display = 'none';
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Validação básica no form
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        alert('Por favor, preencha todos os campos corretamente.');
+      }
+    });
+  </script>
+  <script>
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.querySelector(".lightbox-img");
+  const closeBtn = document.querySelector(".close");
+
+  document.querySelectorAll(".grid-galeria img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = "flex";
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = "none";
+    }
+  });
+</script>
+</body>
+</html>
